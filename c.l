@@ -38,8 +38,65 @@ int comm_beg = 0; /* wiersz rozpoczęcia komentarza */
 
  /* Zad 3 */
  /* Usuwanie bialych znakow */
+
+ /*[ \n\t] ;*/
+
+  /* Zad 4 */
+  /* Usuwanie komentarzy jednowierszowych bez war. pocz. */
+
+"//".*
+
+ /* Zad 5 */
+ /* wykrywanie operatorow wieloznakowych */
+
+"<=" return process_token(yytext, "LE", "", LE);
+"++" return process_token(yytext, "INC", "", INC);
+
+ /* Zad 6 */
+ /* Wykrywanie idntyfikatorow */
+
+[a-zA-Z_][a-zA-Z0-9_]* return process_token(yytext, "IDENT", yytext, IDENT);
+
+ /* Zad 7 */
+ /* Wykrywanie liczb bez znaku calkowitych i zmiennoprzecinkowych */
+
+[0-9]+ return process_token(yytext, "INTEGER_CONST", yytext, INTEGER_CONST);
+(([0-9]+\.[0-9]*)|([0-9]*\.[0-9]+))([eE](\+|-)?[0-9]{1,2})? return process_token(yytext, "FLOAT_CONST", yytext, FLOAT_CONST);
+ 
+ /* Zad 8 */
+ /* Wykrywanie stalych tekstowych (napisow) bez uzycia mechanizmu war. pocz. */
+
+\"[^\"\n]*\" return process_token(yytext, "STRING_CONST", yytext, STRING_CONST); 
+
+ /* Zad 9 */
+ /* Wykrywanie stalych znakowych */
+
+'[a-z]' return process_token(yytext, "CHARACTER_CONST", yytext, STRING_CONST);
+
+ /* Zad 10 */
+ /* Wykrywanie symboli koncowych jednoznakowych */
+
+[;\+*-/:\[\]={}(),.] return process_token(yytext, yytext, "", *yytext);
+
+ /* Zad 11 */
+ /* Wykrywanie dyrektych dolaczania plikow */
+
+#include.* printf("Processing directive %s \n", yytext);
+
+ /* Zad 12 */
+ /* Wykrywanie napisow z war. pocz. */
  
 
+ /* Zad 13 */
+ /* Usuwanie kom. wielowierszowych z war. pocz. */
+
+
+ /* Zad 14 */
+ /* Znajdowanie znakow zamk. kom. przy braku rozp. war. pocz. */
+
+
+ /* Zad 15 */
+ /* Wykrywanie nie zamk. kom. ze wskazaniem jego rozpocz. war. pocz. */
 %%
 
 
