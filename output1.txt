@@ -1,138 +1,13 @@
 Autor: Pawel Cissewski
 yytext              Typ symbolu      Wartość symbolu znakowo
 
-/                   /               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-/                   /               
-
-/                   /               
-*                   *               
- Program             IDENT           Program
- ASCII               IDENT           ASCII
- -                   -               
- wyswietla           IDENT           wyswietla
- rozszerzone         IDENT           rozszerzone
- kody                IDENT           kody
- ASCII               IDENT           ASCII
- *                   *               
-/                   /               
-
-/                   /               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-*                   *               
-/                   /               
-
 Processing directive #include <stdio.h> 
-
 Processing directive #include "test.h" 
-
 unsigned            KW_UNSIGNED     
  char                KW_CHAR         
  uc                  IDENT           uc
 ;                   ;               
- 
-int                 KW_INT          
+ int                 KW_INT          
  fromASCII           IDENT           fromASCII
  =                   =               
  128                 INTEGER_CONST   128
@@ -141,61 +16,20 @@ int                 KW_INT
  =                   =               
  255                 INTEGER_CONST   255
 ;                   ;               
-
-long                KW_LONG         
- int                 KW_INT          
- x                   IDENT           x
-[                   [               
-10                  INTEGER_CONST   10
-]                   ]               
-;                   ;               
-
-void                KW_VOID         
+ void                KW_VOID         
  main                IDENT           main
 (                   (               
  void                KW_VOID         
  )                   )               
-
 {                   {               
-
-  struct              KW_STRUCT       
- data                IDENT           data
- {                   {               
-
-    int                 KW_INT          
-	rok                 IDENT           rok
-;                   ;               
-
-    int                 KW_INT          
- miesiac             IDENT           miesiac
-;                   ;               
-
-    int                 KW_INT          
- dzien               IDENT           dzien
-;                   ;               
-
-  }                   }               
-;                   ;               
-
-  data                IDENT           data
- poczatek            IDENT           poczatek
-,                   ,               
- koniec              IDENT           koniec
-;                   ;               
-
-  int                 KW_INT          
- i                   IDENT           i
-;                   ;               
-
-  printf              IDENT           printf
+ 	printf              IDENT           printf
 (                   (               
- "Rozszerzone kody ASSTRING_CONST    "Rozszerzone kody ASCII\n\n"
+"\n\n\nRozszerzone kSTRING_CONST    "\n\n\nRozszerzone kody ASCII\n\n"
 )                   )               
 ;                   ;               
-
-  for                 KW_FOR          
+	for                 KW_FOR          
  (                   (               
- uc                  IDENT           uc
+uc                  IDENT           uc
  =                   =               
  fromASCII           IDENT           fromASCII
 ;                   ;               
@@ -205,27 +39,20 @@ void                KW_VOID
 ;                   ;               
  uc1                 IDENT           uc1
 ++                  INC             
- )                   )               
- {                   {               
-
-    printf              IDENT           printf
+)                   )               
+	{                   {               
+		printf              IDENT           printf
 (                   (               
- "%3d:%2c"           STRING_CONST    "%3d:%2c"
+"%3d:%2c"           STRING_CONST    "%3d:%2c"
 ,                   ,               
  uc                  IDENT           uc
 ,                   ,               
  uc                  IDENT           uc
- )                   )               
-;                   ;               
- printf              IDENT           printf
-(                   (               
-"\n"                STRING_CONST    "\n"
 )                   )               
 ;                   ;               
-
-  }                   }               
-
-  int                 KW_INT          
+	}                   }               
+}                   }               
+int                 KW_INT          
  x1                  IDENT           x1
  =                   =               
  fromASCII           IDENT           fromASCII
@@ -238,88 +65,13 @@ void                KW_VOID
   toASCII             IDENT           toASCII
  )                   )               
 ;                   ;               
-  /                   /               
-*                   *               
- int                 KW_INT          
- *                   *               
-/                   /               
-
-  double              KW_DOUBLE       
+ double              KW_DOUBLE       
  realTest            IDENT           realTest
  =                   =               
- 12.34e-12           FLOAT_CONST     12.34e-12
+ 12.34               FLOAT_CONST     12.34
  +                   +               
  .56                 FLOAT_CONST     .56
  +                   +               
  78.                 FLOAT_CONST     78.
 ;                   ;               
- /                   /               
-*                   *               
- double              KW_DOUBLE       
- *                   *               
-/                   /               
-
-  x                   IDENT           x
-[                   [               
-0                   INTEGER_CONST   0
-]                   ]               
- =                   =               
- 1                   INTEGER_CONST   1
-;                   ;               
-
-  for                 KW_FOR          
- (                   (               
-i                   IDENT           i
- =                   =               
- 1                   INTEGER_CONST   1
-;                   ;               
- i                   IDENT           i
- < 10                  INTEGER_CONST   10
-;                   ;               
- i                   IDENT           i
-++                  INC             
-)                   )               
- {                   {               
-
-    x                   IDENT           x
-[                   [               
-i                   IDENT           i
-]                   ]               
- =                   =               
- x                   IDENT           x
-[                   [               
-i                   IDENT           i
--                   -               
-1                   INTEGER_CONST   1
-]                   ]               
- *                   *               
- i                   IDENT           i
- *                   *               
- i                   IDENT           i
-;                   ;               
-
-  }                   }               
-
-  poczatek            IDENT           poczatek
-.                   .               
-rok                 IDENT           rok
- =                   =               
- 2018                INTEGER_CONST   2018
-;                   ;               
-
-  poczatek            IDENT           poczatek
-.                   .               
-miesiac             IDENT           miesiac
- =                   =               
- 10                  INTEGER_CONST   10
-;                   ;               
-
-  poczatek            IDENT           poczatek
-.                   .               
-dzien               IDENT           dzien
- =                   =               
- 1                   INTEGER_CONST   1
-;                   ;               
-
-}                   }               
-
+ 

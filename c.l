@@ -10,11 +10,17 @@ int process_token(const char *text, const char *TokenType,
                   const char *TokenVal, const int TokenID); 
 
 int comm_beg = 0; /* wiersz rozpoczęcia komentarza */
+int text_beg = 0;
+int yyleng;
 %}
 
 /* deklaracja warunków początkowych analizatora */
 /* (nie deklarujemy domyślnego warunku INITIAL) */
 /* ..................... */
+
+%x STR COM
+
+%option yylineno
 
 %%
  /* tu należy umieścić odpowiednie reguły w odpowiedniej kolejności */ 
@@ -66,7 +72,7 @@ int comm_beg = 0; /* wiersz rozpoczęcia komentarza */
  /* Zad 8 */
  /* Wykrywanie stalych tekstowych (napisow) bez uzycia mechanizmu war. pocz. */
 
-\"[^\"\n]*\" return process_token(yytext, "STRING_CONST", yytext, STRING_CONST); 
+ /* \"[^\"\n]*\" return process_token(yytext, "STRING_CONST", yytext, STRING_CONST);*/
 
  /* Zad 9 */
  /* Wykrywanie stalych znakowych */
@@ -86,17 +92,32 @@ int comm_beg = 0; /* wiersz rozpoczęcia komentarza */
  /* Zad 12 */
  /* Wykrywanie napisow z war. pocz. */
  
+<INITIAL>\"   { BEGIN(STR); yymore(); text_beg = yylineno; }
+<STR>\"       { 
+  BEGIN(INITIAL);
+  return process_token(yytext, "STRING_CONST", yytext, STRING_CONST);
+}
 
  /* Zad 13 */
  /* Usuwanie kom. wielowierszowych z war. pocz. */
 
+<INITIAL>"/*" { BEGIN(COM); comm_beg = yylineno; }
+<COM>"*/"     { BEGIN(INITIAL); }
+<COM>.|\n      
 
  /* Zad 14 */
  /* Znajdowanie znakow zamk. kom. przy braku rozp. war. pocz. */
 
+<INITIAL>"*/" { fprintf(stderr, "Unexpected closing of comment in line %d\n", yylineno); }
 
  /* Zad 15 */
  /* Wykrywanie nie zamk. kom. ze wskazaniem jego rozpocz. war. pocz. */
+<STR>.  { yymore(); }
+<STR>\n { 
+  fprintf(stderr, "Unfinished string opened in line %d\n", text_beg);
+  BEGIN(INITIAL); 
+}
+\n { }
 %%
 
 
@@ -166,6 +187,9 @@ int yywrap( void )
   /* Jeżeli tak, to oznacza to niezamknięty komentarz lub stała tekstową
      - wypisujemy informację o błędzie. */
   /* ..................... */
+  if (YY_START == COM)
+    fprintf(stderr, "Unfinished comment opened in line %d\n", comm_beg);
+  
   return( 1 ); /* koniecznie, by analiza nie rozpoczęła się od nowa */
 }
 
