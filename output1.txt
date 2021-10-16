@@ -1,0 +1,56 @@
+Autor: Pawel Cissewski
+yytext              Typ symbolu      Wartość symbolu znakowo
+
+/****************************************************/
+/* Program ASCII - wyswietla rozszerzone kody ASCII */
+/****************************************************/
+#include <stdio.h>
+#include "test.h"
+unsigned            KW_UNSIGNED     
+ char                KW_CHAR         
+ uc; // zmienna sterujaca petli typu char                KW_CHAR         
+
+int                 KW_INT          
+ fromASCII = 128, toASCII = 255;
+long                KW_LONG         
+ int                 KW_INT          
+ x[10];
+void                KW_VOID         
+ main( void                KW_VOID         
+ )
+{
+  struct              KW_STRUCT       
+ data {
+    int                 KW_INT          
+	rok;
+    int                 KW_INT          
+ miesiac;
+    int                 KW_INT          
+ dzien;
+  };
+  data poczatek, koniec;
+  int                 KW_INT          
+ i;
+  print                 KW_INT          
+f( "Rozszerzone kody ASCII\n\n");
+  for                 KW_FOR          
+ ( uc = fromASCII; uc <= toASCII; uc1++ ) {
+    print                 KW_INT          
+f( "%3d:%2c", uc, uc ); print                 KW_INT          
+f("\n");
+  }
+  int                 KW_INT          
+ x1 = fromASCII + 2 * ( 20 +  toASCII );  /* int                 KW_INT          
+ */
+  double              KW_DOUBLE       
+ realTest = 12.34e-12 + .56 + 78.; /* double              KW_DOUBLE       
+ */
+  x[0] = 1;
+  for                 KW_FOR          
+ (i = 1; i < 10; i++) {
+    x[i] = x[i-1] * i * i;
+  }
+  poczatek.rok = 2018;
+  poczatek.miesiac = 10;
+  poczatek.dzien = 1;
+}

@@ -48,7 +48,7 @@ TOKEN: KW_CHAR | KW_UNSIGNED | KW_INT | KW_DOUBLE | KW_VOID | KW_FOR
 int main( void )
 {
 	int ret;
-	printf( "Autor: Imię i Nazwisko\n" );
+	printf( "Autor: Pawel Cissewski\n" );
 	printf( "yytext              Typ symbolu      Wartość symbolu znakowo\n\n" );
 	ret = yyparse();
 	return ret;

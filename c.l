@@ -16,12 +16,42 @@ int comm_beg = 0; /* wiersz rozpoczęcia komentarza */
 /* (nie deklarujemy domyślnego warunku INITIAL) */
 /* ..................... */
 
+%%
+ /* tu należy umieścić odpowiednie reguły w odpowiedniej kolejności */ 
+
+ /* Zad 2 */
+ /* Wykrywanie slow kluczowych */ 
+(?i:int) return process_token(yytext, "KW_INT", "", KW_INT);
+(?i:char) return process_token(yytext, "KW_CHAR", "", KW_CHAR);
+(?i:unsigned) return process_token(yytext, "KW_UNSIGNED", "", KW_UNSIGNED);
+(?i:short) return process_token(yytext, "KW_SHORT", "", KW_SHORT);
+(?i:long) return process_token(yytext, "KW_LONG", "", KW_LONG);
+(?i:float) return process_token(yytext, "KW_FLOAT", "", KW_FLOAT);
+(?i:void) return process_token(yytext, "KW_VOID", "", KW_VOID);
+(?i:for) return process_token(yytext, "KW_FOR", "", KW_FOR);
+(?i:double) return process_token(yytext, "KW_DOUBLE", "", KW_DOUBLE);
+(?i:if) return process_token(yytext, "KW_IF", "", KW_IF);
+(?i:else) return process_token(yytext, "KW_ELSE", "", KW_ELSE);
+(?i:while) return process_token(yytext, "KW_WHILE", "", KW_WHILE);
+(?i:do) return process_token(yytext, "KW_DO", "", KW_DO);
+(?i:struct) return process_token(yytext, "KW_STRUCT", "", KW_STRUCT);
+
+ /* Zad 3 */
+ /* Usuwanie bialych znakow */
+ 
 
 %%
- /* tu należy umieścić odpowiednie reguły w odpowiedniej kolejności */
 
 
-%%
+
+
+
+
+
+
+
+
+
 
 /* Nazwa:       process_token
  * Cel:         Wypisanie informacji o wykrytym elemencie i przekazanie
